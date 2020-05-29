@@ -1,0 +1,29 @@
+{
+  "name": "prisma_test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^2.0.0-beta.6",
+    "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
+    "graphql": "^15.0.0"
+  },
+  "devDependencies": {
+    "@prisma/cli": "^2.0.0-beta.6",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.8.3"
+  },
+  "scripts": {
+    "start:dev": "ts-node app/index.ts",
+    "build": "tsc",
+    "prisma:migrate": "npx prisma migrate save --schema=./app/data_access/prisma/schema.prisma --experimental && npx prisma migrate up --schema=./app/data_access/prisma/schema.prisma --experimental",
+    "prisma:unmigrate": "npx prisma migrate down --schema=./app/data_access/prisma/schema.prisma --experimental",
+    "prisma:introspect": "npx prisma introspect --schema=./app/data_access/prisma/schema.prisma",
+    "prisma:generate": "npx prisma generate --schema=./app/data_access/prisma/schema.prisma",
+    "prisma:reset": "npm run prisma:unmigrate && npm run prisma:migrate && npm run prisma:generate"
+  }
+}
